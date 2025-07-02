@@ -348,7 +348,18 @@
         });
         
         async function generateSuggestionWithGemini(userPrompt) {
-            const apiKey = "";
+            // =================================================================================
+            // CLAVE DE API INSERTADA
+            // =================================================================================
+            const apiKey = "AIzaSyBPZf9TLJsMJLkfxRm1sjlDifVHhxshU98";
+            
+            if (apiKey === "AQUÍ_VA_TU_CLAVE_DE_API_DE_GEMINI") {
+                 return {
+                    sugerencia: "Error: Falta la clave de API. Por favor, edita el archivo index.html y añade tu clave de API de Gemini para que la aplicación funcione.",
+                    prompt: "No se puede generar un prompt sin una clave de API válida."
+                };
+            }
+
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
             
             const payload = {
@@ -393,8 +404,8 @@
             } catch (error) {
                 console.error("Error al llamar a la API de Gemini:", error);
                 return {
-                    sugerencia: "Explora tu curiosidad. Pregúntale a la IA sobre un tema que siempre quisiste saber, como '¿cómo funcionan los agujeros negros?' o '¿cuál es la historia del chocolate?'.",
-                    prompt: "Explícame de forma sencilla y creativa cómo funcionan los motores de los cohetes espaciales."
+                    sugerencia: "Hubo un error al contactar a la IA. Revisa la consola del navegador para más detalles. Puede que la clave de API sea incorrecta o que haya un problema de red.",
+                    prompt: "Error al generar."
                 };
             }
         }
